@@ -1,5 +1,5 @@
 Feature: Scenario Outline
-  @wip
+  @wip @smoke @clean_something
   Scenario Outline: Use Blender with <thing>
     Given I put "<thing>" in a blender
     When I switch the blender on
