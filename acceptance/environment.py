@@ -64,6 +64,7 @@ def before_feature(context, feature):
             "We are using 'Firefox' as a browser with driver version: {}".format(context.driver.desired_capabilities['moz:geckodriverVersion']))
     elif context.config.userdata.get('browser') == 'chrome':
         chrome_options = webdriver.ChromeOptions()
+        chrome_options.add_argument('--headless')
 
         path = context.config.userdata.get('chromedriver_path')
         if path == "":
