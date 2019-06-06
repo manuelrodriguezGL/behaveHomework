@@ -22,3 +22,15 @@ def step_impl(context, flag):
         assert not visibility_of(page.change_password)
     else:
         assert visibility_of(page.change_password)
+
+
+@step('I logout the application')
+def step_impl(context):
+    page = DashboardPage(context)
+    page.logout.click()
+
+
+@step('I select Users link in dashboard')
+def step_impl(context):
+    page = DashboardPage(context)
+    page.users_link.click()

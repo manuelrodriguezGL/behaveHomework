@@ -41,9 +41,18 @@ def before_scenario(context, scenario):
 def after_scenario(context, scenario):
     scenario_finish_status = scenario.status
 
+    # take screenshot if the test case fails
     if scenario.status == 'failed':
         allure.attach(context.driver.get_screenshot_as_png(), name='screenshot', attachment_type=allure.attachment_type.PNG)
     print('\n')
+
+    # logout of the application if logout tag present
+    if "logout" in [tag for tag in scenario.tags]:
+        context.execute_steps(f"""
+            When I logout the application
+            And I click into the site name 
+            And I wait 2 seconds 
+        """)
 
 
 def before_feature(context, feature):
@@ -102,8 +111,16 @@ def before_rule(context, rule):
 
 
 def after_tag(context, tag):
-    if tag == "clean_something":
-        print_custom("We are going to clean something right now")
+    if tag == "remove_user":
+        context.execute_steps(f"""
+            Given I login with username "valid_user" and password "valid_password"
+            When I wait 2 seconds
+            And I select Users link in dashboard
+            And I remove user with name "{context.scenario.name}" if exists
+            And I logout the application
+            And I click into the site name 
+            And I wait 2 seconds
+        """)
 
 
 def print_custom(text):

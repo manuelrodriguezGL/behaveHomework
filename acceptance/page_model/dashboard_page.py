@@ -10,3 +10,7 @@ class DashboardPage(BasePage):
     @property
     def change_password(self):
         return self.driver.find_element(*DashboardLocators.CHANGE_PASSWORD)
+
+    @property
+    def users_link(self):
+        return self.driver.find_element(*DashboardLocators.USERS_LINK)
