@@ -17,7 +17,9 @@ from django.conf.urls import url
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.auth.models import User
+from django.contrib.sites.models import Site
 from django.urls import path, include
+from filer.models import Folder
 from rest_framework import viewsets, routers, serializers
 
 from web import settings
@@ -28,7 +30,19 @@ from web import views
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
-        fields = ('url', 'username', 'email', 'is_staff')
+        fields = ('pk', 'url', 'username', 'email', 'is_staff')
+
+
+class SiteSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Site
+        fields = ('pk', 'url', 'domain', 'name')
+
+
+class FolderSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Folder
+        fields = ('pk', 'url', 'name', 'owner')
 
 
 # ViewSets define the view behavior.
@@ -37,9 +51,21 @@ class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
 
 
+class SiteViewSet(viewsets.ModelViewSet):
+    queryset = Site.objects.all()
+    serializer_class = SiteSerializer
+
+
+class FolderViewSet(viewsets.ModelViewSet):
+    queryset = Folder.objects.all()
+    serializer_class = FolderSerializer
+
+
 # Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter()
-router.register(r'users', UserViewSet)
+router.register(r'api/users', UserViewSet)
+router.register(r'api/sites', SiteViewSet)
+router.register(r'api/folders', FolderViewSet)
 
 urlpatterns = [
                   path('admin/', admin.site.urls, name='admin'),
