@@ -22,11 +22,10 @@ from django.urls import path, include
 from filer.models import Folder
 from rest_framework import viewsets, routers, serializers
 
-from web import settings
-from web import views
-
-
 # Serializers define the API representation.
+from web.web import settings
+
+
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
