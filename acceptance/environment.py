@@ -53,6 +53,9 @@ def after_scenario(context, scenario):
             And I click into the site name 
             And I wait 2 seconds 
         """)
+    context.logger.info("********************************************************************")
+    context.logger.info(f"* Finished test case {scenario.name}")
+    context.logger.info("********************************************************************")
 
 
 def before_feature(context, feature):
