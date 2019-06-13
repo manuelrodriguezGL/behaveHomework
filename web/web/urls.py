@@ -23,7 +23,7 @@ from filer.models import Folder
 from rest_framework import viewsets, routers, serializers
 
 # Serializers define the API representation.
-from web.web import settings
+from web import settings
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):

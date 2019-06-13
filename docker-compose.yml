@@ -6,6 +6,7 @@ services:
       - DISPLAY=:99
       - CHROME_BINARY_PATH=/usr/bin/google-chrome
       - DBUS_SESSION_BUS_ADDRESS=/dev/null
+      - APP_API_URL=http://10.10.48.161:9000/
       - APP_USERNAME=admin
       - APP_PASSWORD=admin
     working_dir: /automation
@@ -15,12 +16,13 @@ services:
     tty: true
     network_mode: "host"
     depends_on:
-      - allure_training
+      - qa_allure_training
     volumes:
       - reports_training:/automation/allure-results
+      - .:/automation
 
 
-  allure_training:
+  qa_allure_training:
     image: "frankescobar/allure-docker-service"
     environment:
       CHECK_RESULTS_EVERY_SECONDS: 5

@@ -1,5 +1,6 @@
 allure-behave==2.6.3
 allure-python-commons==2.6.3
+atomicwrites==1.3.0
 attrs==19.1.0
 behave==1.2.6
 certifi==2019.3.9
@@ -13,10 +14,18 @@ djangorestframework==3.9.3
 easy-thumbnails==2.6
 ExifRead==2.1.2
 idna==2.8
+importlib-metadata==0.18
+more-itertools==7.0.0
+packaging==19.0
 parse==1.12.0
 parse-type==0.4.2
 Pillow==6.0.0
-#pluggy==0.11.0
+pluggy==0.12.0
+py==1.8.0
+pyparsing==2.4.0
+pytest==4.6.3
+pytest-html==1.20.0
+pytest-metadata==1.8.0
 pytz==2019.1
 requests==2.21.0
 selenium==3.141.0
@@ -24,3 +33,5 @@ six==1.12.0
 sqlparse==0.3.0
 Unidecode==1.0.23
 urllib3==1.24.3
+wcwidth==0.1.7
+zipp==0.5.1
