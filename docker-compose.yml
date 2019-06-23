@@ -1,0 +1,37 @@
+version: '3'
+
+services:
+  qa_training:
+    environment:
+      - DISPLAY=:99
+      - CHROME_BINARY_PATH=/usr/bin/google-chrome
+      - DBUS_SESSION_BUS_ADDRESS=/dev/null
+      - APP_API_URL=http://10.10.48.161:9000/
+      - APP_USERNAME=admin
+      - APP_PASSWORD=admin
+    working_dir: /automation
+    image: qa_training
+    build: .
+    container_name: qa_training
+    tty: true
+    network_mode: "host"
+    depends_on:
+      - qa_allure_training
+    volumes:
+      - reports_training:/automation/allure-results
+      - .:/automation
+
+
+  qa_allure_training:
+    image: "frankescobar/allure-docker-service"
+    environment:
+      CHECK_RESULTS_EVERY_SECONDS: 5
+    ports:
+    - "6060:4040"
+    container_name: allure_training
+    tty: true
+    volumes:
+      - reports_training:/app/allure-results
+
+volumes:
+  reports_training:
