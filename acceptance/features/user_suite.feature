@@ -8,13 +8,13 @@
     Then I should see logout option
     And I should see change password option
     When I click on Add option on Users dashboard
-    Then Add user page is displayed
+    Then I see the page header with text "Site administration"
     When I create a new user with the following information
       | username | password   | password_confirmation |
       | test_1   | pass123!!  | pass123!!             |
     And I click on SAVE button
-    Then Edit user information page is loaded
-    When I click on SAVE button again
-    Then Select user to change page is displayed
-    When I write "search_user" on search box
+    Then I see the page header with text "Change user"
+    When I click on SAVE button
+    Then I see the page header with text "Select user to change"
+    When I search for "search_user" on search box
     Then I see "search_user" displayed on results grid

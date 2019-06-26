@@ -2,6 +2,8 @@ from selenium.webdriver import ActionChains
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 
+from time import sleep
+
 
 def send_keys(element=None, text="", clear=True):
     if clear:
@@ -45,3 +47,7 @@ def wait_for_element_to_appear(context, element, timeout=0):
 
 def double_click(context, element):
     ActionChains(context.driver).double_click(element).perform()
+
+
+def explicit_wait(seconds=1):
+    sleep(seconds)
