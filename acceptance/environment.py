@@ -118,8 +118,8 @@ def before_rule(context, rule):
 def after_tag(context, tag):
     # TODO: Refactor to project needs
 
-    if tag == "api_remove_user":
-        TestUserSuite.test_delete_user
+    #if tag == "users.add_successful":
+     #   TestUserSuite.test_delete_user(context)
 
     if tag == "remove_user":
         context.execute_steps(f"""

@@ -6,7 +6,6 @@ from api.pageobjects.page_base_api import ApiBase
 class UsersPage(ApiBase):
     USERS_BASE_URL = 'api/users/'
 
-    @property
     def all_users(self):
         response = requests.get("{}{}".format(self.url, self.USERS_BASE_URL), auth=self.auth, verify=False)
         return response.json(), response.status_code
@@ -14,7 +13,7 @@ class UsersPage(ApiBase):
     def get_user_id_by_username(self, username):
         user_id = None
         try:
-            users, status_code = self.all_users(self)
+            users, status_code = self.all_users()
             if status_code == 200:
                 for user in users:
                     if user['username'] == username:

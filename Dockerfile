@@ -1,5 +1,5 @@
 FROM ubuntu:18.04
-MAINTAINER Oscar Valerio Montes. <oscar.valerio@gorillalogic.com>
+MAINTAINER Oscar Valerio Montes. <manuel.rodriguez@gorillalogic.com>
 
 ADD . /automation
 WORKDIR /automation
