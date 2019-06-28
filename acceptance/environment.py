@@ -115,6 +115,7 @@ def before_rule(context, rule):
 
 
 def after_tag(context, tag):
+    # TODO: Refactor to project needs
     if tag == "remove_user":
         context.execute_steps(f"""
             Given I login with username "valid_user" and password "valid_password"

@@ -1,0 +1,252 @@
+{
+  "uid" : "1474001ec0ce3548",
+  "name" : "001",
+  "historyId" : "dbd91ddff57ddc0745839927e481240e",
+  "time" : {
+    "start" : 1561734439813,
+    "stop" : 1561734443305,
+    "duration" : 3492
+  },
+  "description" : "[This test case adds a new user]",
+  "descriptionHtml" : "<p>[This test case adds a new user]</p>\n",
+  "status" : "broken",
+  "statusMessage" : "AttributeError: 'NoneType' object has no attribute 'clear'\n",
+  "statusTrace" : "  File \"/Users/manuelrodriguez/repo/behaveHW/lib/python3.7/site-packages/behave/model.py\", line 1329, in run\n    match.run(runner.context)\n  File \"/Users/manuelrodriguez/repo/behaveHW/lib/python3.7/site-packages/behave/matchers.py\", line 98, in run\n    self.func(context, *args, **kwargs)\n  File \"acceptance/steps/login_page_steps.py\", line 14, in step_impl\n    send_keys(page.username_text, username)\n  File \"/Users/manuelrodriguez/repo/behaveHW/BehaveWebAndAPI/acceptance/utils/botstyle.py\", line 10, in send_keys\n    element.clear()\n",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "testStage" : {
+    "description" : "[This test case adds a new user]",
+    "status" : "broken",
+    "statusMessage" : "AttributeError: 'NoneType' object has no attribute 'clear'\n",
+    "statusTrace" : "  File \"/Users/manuelrodriguez/repo/behaveHW/lib/python3.7/site-packages/behave/model.py\", line 1329, in run\n    match.run(runner.context)\n  File \"/Users/manuelrodriguez/repo/behaveHW/lib/python3.7/site-packages/behave/matchers.py\", line 98, in run\n    self.func(context, *args, **kwargs)\n  File \"acceptance/steps/login_page_steps.py\", line 14, in step_impl\n    send_keys(page.username_text, username)\n  File \"/Users/manuelrodriguez/repo/behaveHW/BehaveWebAndAPI/acceptance/utils/botstyle.py\", line 10, in send_keys\n    element.clear()\n",
+    "steps" : [ {
+      "name" : "Given I login with username \"admin\" and password \"admin\"",
+      "time" : {
+        "start" : 1561734439814,
+        "stop" : 1561734443302,
+        "duration" : 3488
+      },
+      "status" : "broken",
+      "statusMessage" : "AttributeError: 'NoneType' object has no attribute 'clear'\n",
+      "statusTrace" : "  File \"/Users/manuelrodriguez/repo/behaveHW/lib/python3.7/site-packages/behave/model.py\", line 1329, in run\n    match.run(runner.context)\n  File \"/Users/manuelrodriguez/repo/behaveHW/lib/python3.7/site-packages/behave/matchers.py\", line 98, in run\n    self.func(context, *args, **kwargs)\n  File \"acceptance/steps/login_page_steps.py\", line 14, in step_impl\n    send_keys(page.username_text, username)\n  File \"/Users/manuelrodriguez/repo/behaveHW/BehaveWebAndAPI/acceptance/utils/botstyle.py\", line 10, in send_keys\n    element.clear()\n",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : true,
+      "hasContent" : true
+    }, {
+      "name" : "Then I should see logout option",
+      "time" : {
+        "start" : 1561734443304,
+        "stop" : 1561734443304,
+        "duration" : 0
+      },
+      "status" : "skipped",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    }, {
+      "name" : "And I should see change password option",
+      "time" : {
+        "start" : 1561734443304,
+        "stop" : 1561734443304,
+        "duration" : 0
+      },
+      "status" : "skipped",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    }, {
+      "name" : "When I click on Add option on Users dashboard",
+      "time" : {
+        "start" : 1561734443304,
+        "stop" : 1561734443304,
+        "duration" : 0
+      },
+      "status" : "skipped",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    }, {
+      "name" : "Then I see the page header with text \"Site administration\"",
+      "time" : {
+        "start" : 1561734443304,
+        "stop" : 1561734443304,
+        "duration" : 0
+      },
+      "status" : "skipped",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    }, {
+      "name" : "When I create a new user with the following information",
+      "time" : {
+        "start" : 1561734443304,
+        "stop" : 1561734443304,
+        "duration" : 0
+      },
+      "status" : "skipped",
+      "steps" : [ ],
+      "attachments" : [ {
+        "uid" : "1344f4a4689ac913",
+        "name" : ".table",
+        "source" : "1344f4a4689ac913.csv",
+        "type" : "text/csv",
+        "size" : 66
+      } ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 1,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "And I click on SAVE button",
+      "time" : {
+        "start" : 1561734443304,
+        "stop" : 1561734443304,
+        "duration" : 0
+      },
+      "status" : "skipped",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    }, {
+      "name" : "Then I see the page header with text \"Change user\"",
+      "time" : {
+        "start" : 1561734443305,
+        "stop" : 1561734443305,
+        "duration" : 0
+      },
+      "status" : "skipped",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    }, {
+      "name" : "When I click on SAVE button again",
+      "time" : {
+        "start" : 1561734443305,
+        "stop" : 1561734443305,
+        "duration" : 0
+      },
+      "status" : "skipped",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    }, {
+      "name" : "Then I see the page header with text \"Select user to change\"",
+      "time" : {
+        "start" : 1561734443305,
+        "stop" : 1561734443305,
+        "duration" : 0
+      },
+      "status" : "skipped",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    }, {
+      "name" : "When I search for \"test_1\" on search box",
+      "time" : {
+        "start" : 1561734443305,
+        "stop" : 1561734443305,
+        "duration" : 0
+      },
+      "status" : "skipped",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    }, {
+      "name" : "Then I see \"test_1\" displayed on results grid",
+      "time" : {
+        "start" : 1561734443305,
+        "stop" : 1561734443305,
+        "duration" : 0
+      },
+      "status" : "skipped",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    } ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 12,
+    "attachmentsCount" : 1,
+    "shouldDisplayMessage" : false,
+    "hasContent" : true
+  },
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "tag",
+    "value" : "users"
+  }, {
+    "name" : "tag",
+    "value" : "users.add_successful"
+  }, {
+    "name" : "severity",
+    "value" : "normal"
+  }, {
+    "name" : "feature",
+    "value" : "This suite will contain all the tests related to user management"
+  }, {
+    "name" : "framework",
+    "value" : "behave"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : true,
+  "retry" : true,
+  "extra" : {
+    "categories" : [ ],
+    "tags" : [ "users.add_successful", "users" ]
+  },
+  "source" : "1474001ec0ce3548.json",
+  "parameterValues" : [ ]
+}

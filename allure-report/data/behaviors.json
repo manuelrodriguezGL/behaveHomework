@@ -1,0 +1,22 @@
+{
+  "uid" : "b1a8273437954620fa374b796ffaacdd",
+  "name" : "behaviors",
+  "children" : [ {
+    "name" : "This suite will contain all the tests related to user management",
+    "children" : [ {
+      "name" : "001",
+      "uid" : "e0e0547fadd32588",
+      "parentUid" : "11cab78786d7f1c2b0927e10855889db",
+      "status" : "passed",
+      "time" : {
+        "start" : 1561734463384,
+        "stop" : 1561734469165,
+        "duration" : 5781
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "parameters" : [ ]
+    } ],
+    "uid" : "11cab78786d7f1c2b0927e10855889db"
+  } ]
+}
