@@ -76,7 +76,8 @@ def before_feature(context, feature):
             "We are using 'Firefox' as a browser with driver version: {}".format(context.driver.desired_capabilities['moz:geckodriverVersion']))
     elif context.config.userdata.get('browser') == 'chrome':
         chrome_options = webdriver.ChromeOptions()
-        chrome_options.add_argument('--headless')
+        if context.config.userdata.get('se_headless') == "True":
+            chrome_options.add_argument('--headless')
 
         path = context.config.userdata.get('chromedriver_path')
         if path == "":
@@ -91,8 +92,8 @@ def before_feature(context, feature):
         context.logger.error(e.__class__)
         context.logger.warning("Unable to maximize the browser. ")
 
-    context.driver.set_page_load_timeout(context.config.userdata.get('se_default_page_load_time'))
-    context.driver.implicitly_wait(context.config.userdata.get('se_default_implicit_time'))
+    context.driver.set_page_load_timeout(context.config.userdata.get('se_default_page_load_wait'))
+    context.driver.implicitly_wait(context.config.userdata.get('se_default_implicit_wait'))
     context.driver.delete_all_cookies()
     context.driver.get(context.app_url)
 

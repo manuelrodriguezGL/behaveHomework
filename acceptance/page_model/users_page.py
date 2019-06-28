@@ -20,10 +20,5 @@ class UsersPage(BasePage):
         return self.driver.find_element(*UsersPageLocators.USERS_RESULT_TABLE)
 
     @property
-    def find_user_name_table(self, text):
-        rows = self.driver.find_element(*UsersPageLocators.USERS_TABLE_NAMES)
-        found = False
-        for row in rows:
-            if row.text == text:
-                found = True
-        return found
+    def users_name_table(self):
+        return self.driver.find_elements(*UsersPageLocators.USERS_TABLE_NAMES)

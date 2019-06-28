@@ -4,7 +4,7 @@
   @users.add_successful
   Scenario: 001
     [This test case adds a new user]
-    Given I login with username "valid_user" and password "valid_password"
+    Given I login with username "admin" and password "admin"
     Then I should see logout option
     And I should see change password option
     When I click on Add option on Users dashboard
@@ -14,7 +14,7 @@
       | test_1   | pass123!!  | pass123!!             |
     And I click on SAVE button
     Then I see the page header with text "Change user"
-    When I click on SAVE button
+    When I click on SAVE button again
     Then I see the page header with text "Select user to change"
-    When I search for "search_user" on search box
-    Then I see "search_user" displayed on results grid
+    When I search for "test_1" on search box
+    Then I see "test_1" displayed on results grid

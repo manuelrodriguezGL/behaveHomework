@@ -51,3 +51,11 @@ def double_click(context, element):
 
 def explicit_wait(seconds=1):
     sleep(seconds)
+
+
+def find_text_on_collection(collection, text):
+    found = False
+    for element in collection:
+        if element.text == text:
+            found = True
+    return found

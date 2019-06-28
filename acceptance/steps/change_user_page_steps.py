@@ -5,7 +5,10 @@ from acceptance.page_model.change_user_page import ChangeUserPage
 from acceptance.utils.botstyle import wait_for_element_to_appear
 
 
-@step("I click on SAVE button")
+use_step_matcher('re')
+
+
+@step('I click on SAVE button again')
 def step_impl(context):
     page = ChangeUserPage(context)
     page.save_button.click()
