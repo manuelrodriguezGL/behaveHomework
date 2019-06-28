@@ -3,6 +3,7 @@ from selenium import webdriver
 
 from acceptance.utils.logger import setup_custom_logger
 from acceptance.utils.read_env_config import ReadEnvConfig
+from api.testcases.test_user_suite import TestUserSuite
 
 
 def before_all(context):
@@ -116,6 +117,10 @@ def before_rule(context, rule):
 
 def after_tag(context, tag):
     # TODO: Refactor to project needs
+
+    if tag == "api_remove_user":
+        TestUserSuite.test_delete_user
+
     if tag == "remove_user":
         context.execute_steps(f"""
             Given I login with username "valid_user" and password "valid_password"
