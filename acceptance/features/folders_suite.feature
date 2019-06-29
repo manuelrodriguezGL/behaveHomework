@@ -1,7 +1,7 @@
 @users
   Feature: This suite will contain all the tests related to folder management
 
-    @folders.create_successful
+    @folders.create_successful @wip
     Scenario: 001
       [This test case adds a new folder]
       Given I login with username "admin" and password "admin"

@@ -1,10 +1,8 @@
 from behave import use_step_matcher, step
-from selenium import webdriver
-from selenium.webdriver.support.expected_conditions import visibility_of
 
 from acceptance.page_model.filer_page import FilerPage
 from acceptance.page_model.new_folder_page import NewFolderPage
-from acceptance.utils.botstyle import wait_for_element_to_appear, send_keys
+from acceptance.utils.botstyle import send_keys
 
 use_step_matcher('re')
 

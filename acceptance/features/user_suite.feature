@@ -20,7 +20,7 @@ Feature: This suite will contain all the tests related to user management
     Then I see "test_1" displayed on results grid
 
 
-  @users.remove_successful @wip
+  @users.remove_successful
   Scenario: 002
   [This test case removes an existing user]
     Given I login with username "admin" and password "admin"

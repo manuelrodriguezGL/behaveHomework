@@ -2,7 +2,7 @@ from behave import use_step_matcher, step
 from selenium.webdriver.support.expected_conditions import visibility_of
 
 from acceptance.page_model.filer_page import FilerPage
-from acceptance.utils.botstyle import wait_for_element_to_appear, find_text_on_collection
+from acceptance.utils.botstyle import find_text_on_collection
 
 use_step_matcher('re')
 
@@ -20,7 +20,7 @@ def step_impl(context):
 def step_impl(context):
     try:
         page = FilerPage(context)
-        wait_for_element_to_appear(context, page.filer_dropdown)
+        visibility_of(page.filer_dropdown)
     except Exception as e:
         print(e.__cause__)
 
@@ -29,7 +29,7 @@ def step_impl(context):
 def step_impl(context):
     try:
         page = FilerPage(context)
-        wait_for_element_to_appear(context, page.filer_search_box)
+        visibility_of(page.filer_search_box)
     except Exception as e:
         print(e.__cause__)
 

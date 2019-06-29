@@ -1,5 +1,4 @@
 from behave import use_step_matcher, step
-from selenium.webdriver.support.expected_conditions import visibility_of
 
 from acceptance.page_model.users_page import UsersPage
 from acceptance.utils.botstyle import send_keys, explicit_wait, find_text_on_collection
