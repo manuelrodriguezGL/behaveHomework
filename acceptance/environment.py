@@ -80,11 +80,14 @@ def before_feature(context, feature):
         context.logger.info(
             "We are using 'Firefox' as a browser with driver version: {}".format(context.driver.desired_capabilities['moz:geckodriverVersion']))
     elif context.config.userdata.get('browser') == 'chrome':
+        context.logger.info("User Browser: {}".format(context.config.userdata.get('browser')))
         chrome_options = webdriver.ChromeOptions()
         if context.config.userdata.get('se_headless') == "True":
             chrome_options.add_argument('--headless')
 
+        chrome_options.add_argument('--disable-dev-shm-usage')
         path = context.config.userdata.get('chromedriver_path')
+        context.logger.info("Chromedriver path: {}".format(path))
         if path == "":
             context.driver = webdriver.Chrome(chrome_options=chrome_options)
         else:
