@@ -6,9 +6,6 @@ from acceptance.utils.botstyle import send_keys
 
 use_step_matcher('re')
 
-main_window = None
-window_new = None
-
 
 @step('I create a new folder and click Save button')
 def step_impl(context):
@@ -17,7 +14,7 @@ def step_impl(context):
             context.execute_steps(f"""
                 When I click on New Folder option
                 Then Add new folder window is opened
-                When I fill folder name with value "{row['username']}"
+                When I fill folder name with value "{row['folder_name']}"
                 And I click Save button on new folder page
                 And I return to main window
             """)
@@ -36,7 +33,6 @@ def step_impl(context):
 @step('Add new folder window is opened')
 def step_impl(context):
     driver = context.driver
-    main_window = driver.window_handles[0]  # Gets the main window
     window_new = driver.window_handles[1]
     driver.switch_to.window(window_new)
 
@@ -62,6 +58,11 @@ def step_impl(context):
 @step('I return to main window')
 def step_impl(context):
     try:
+        main_window = get_main_window_handle(context)
         context.driver.switch_to.window(main_window)
     except Exception as e:
         context.logger.info(e.__cause__)
+
+
+def get_main_window_handle(context):
+    return context.driver.window_handles[0]  # Gets the main window

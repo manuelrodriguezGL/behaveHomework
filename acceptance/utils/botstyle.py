@@ -58,4 +58,5 @@ def find_text_on_collection(collection, text):
     for element in collection:
         if element.text == text:
             found = True
+            break
     return found
