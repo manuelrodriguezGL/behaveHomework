@@ -3,6 +3,7 @@ from selenium import webdriver
 
 from acceptance.utils.logger import setup_custom_logger
 from acceptance.utils.read_env_config import ReadEnvConfig
+from api.pageobjects.user_page_api import UsersPage
 from api.testcases.test_user_suite import TestUserSuite
 
 
@@ -116,24 +117,30 @@ def before_rule(context, rule):
 
 
 def after_tag(context, tag):
-    # TODO: Refactor to project needs
+    if tag == "users.remove_successful":
+        delete_user(context)
 
-    #if tag == "users.add_successful":
-     #   TestUserSuite.test_delete_user(context)
-
-    if tag == "remove_user":
-        context.execute_steps(f"""
-            Given I login with username "valid_user" and password "valid_password"
-            When I wait 2 seconds
-            And I select Users link in dashboard
-            And I remove user with name "{context.scenario.name}" if exists
-            And I logout the application
-            And I click into the site name 
-            And I wait 2 seconds
-        """)
+# context.execute_steps(f"""
+        #     Given I login with username "valid_user" and password "valid_password"
+        #     When I wait 2 seconds
+        #     And I select Users link in dashboard
+        #     And I remove user with name "{context.scenario.name}" if exists
+        #     And I logout the application
+        #     And I click into the site name
+        #     And I wait 2 seconds
+        # """)
 
 
 def print_custom(text):
     print("\n\n******************************************************************************")
     print(text)
     print("******************************************************************************\n\n")
+
+
+def delete_user(context):
+    page = UsersPage(ReadEnvConfig.get_app_api_url(), context.app_username, context.app_password)
+    user_id = page.get_user_id_by_username_contains(context.scenario.name)
+    context.logger.info("*** Found User Id {} ***".format(user_id))
+    context.logger.info("*** Deleting User Id {}... ***".format(user_id))
+    page.delete_user(user_id)
+    context.logger.info("*** User Id {} has been deleted! ***".format(user_id))

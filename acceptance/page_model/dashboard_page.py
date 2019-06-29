@@ -18,3 +18,7 @@ class DashboardPage(BasePage):
     @property
     def add_user_option(self):
         return self.driver.find_element(*DashboardPageLocators.ADD_USER_OPTION)
+
+    @property
+    def folders_option(self):
+        return self.driver.find_element(*DashboardPageLocators.FOLDER_OPTION)

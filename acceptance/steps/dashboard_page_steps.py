@@ -34,3 +34,11 @@ def step_impl(context):
     except Exception as e:
         print(e.__cause__)
 
+
+@step('I click on Folders option on Users dashboard')
+def step_impl(context):
+    page = DashboardPage(context)
+    try:
+        page.folders_option.click()
+    except Exception as e:
+        print(e.__cause__)

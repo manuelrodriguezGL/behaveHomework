@@ -4,6 +4,7 @@ from acceptance.utils.read_env_config import ReadEnvConfig
 from api.configurations.test_case_base import TestCaseBase
 from api.pageobjects.user_page_api import UsersPage
 
+
 class TestUserSuite(TestCaseBase):
     base_data_path = "../data/" # DEBUG ONLY!!!
     # base_data_path = "api/data/" # DELPOY ONLY !!!
