@@ -6,8 +6,8 @@ from api.pageobjects.user_page_api import UsersPage
 
 
 class TestUserSuite(TestCaseBase):
-    base_data_path = "../data/" # DEBUG ONLY!!!
-    # base_data_path = "api/data/" # DELPOY ONLY !!!
+    # base_data_path = "../data/" # DEBUG ONLY!!!
+    base_data_path = "api/data/"  # DEPLOY ONLY !!!
 
     def setUp(self) -> None:
         super().setUp()

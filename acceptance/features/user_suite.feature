@@ -1,7 +1,7 @@
 @users
 Feature: This suite will contain all the tests related to user management
 
-  @users.add_successful
+  @users.add_successful @logout
   Scenario: 001
   [This test case adds a new user]
     Given I login with username "admin" and password "admin"
@@ -18,9 +18,9 @@ Feature: This suite will contain all the tests related to user management
     Then I see the page header with text "Select user to change"
     When I search for "test_001" on search box
     Then I see "test_001" displayed on results grid
+    And  I logout the application
 
-
-  @users.remove_successful
+  @users.remove_successful @duplicate
   Scenario: 002
   [This test case removes an existing user]
     Given I login with username "admin" and password "admin"

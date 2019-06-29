@@ -1,3 +1,5 @@
+import os
+
 import allure
 from selenium import webdriver
 
@@ -50,12 +52,12 @@ def after_scenario(context, scenario):
     print('\n')
 
     # logout of the application if logout tag present
-    if "logout" in [tag for tag in scenario.tags]:
-        context.execute_steps(f"""
-            When I logout the application
-            And I click into the site name 
-            And I wait 2 seconds 
-        """)
+    # if "logout" in [tag for tag in scenario.tags]:
+    #     context.execute_steps(f"""
+    #         When I logout the application
+    #         And I click into the site name
+    #         And I wait 2 seconds
+    #     """)
     context.logger.info("********************************************************************")
     context.logger.info(f"* Finished test case {scenario.name}")
     context.logger.info("********************************************************************")
@@ -112,17 +114,20 @@ def before_tag(context, tag):
     if tag == "smoke":
         print_custom("This is part of a smoke testing")
 
+    if tag == "folders.remove_successful_ui":
+        create_folder_api(context)
+
 
 def before_rule(context, rule):
     print_custom(rule)
 
 
 def after_tag(context, tag):
-    if tag == "users.remove_successful":
-        delete_user(context)
+    if tag == "users.add_successful":
+        delete_user_api(context)
 
-    if tag == "folders.remove_successful":
-        delete_folder(context)
+    if tag == "folders.create_successful":
+        delete_folder_api(context)
 
 # context.execute_steps(f"""
         #     Given I login with username "valid_user" and password "valid_password"
@@ -141,7 +146,7 @@ def print_custom(text):
     print("******************************************************************************\n\n")
 
 
-def delete_user(context):
+def delete_user_api(context):
     page = UsersPage(ReadEnvConfig.get_app_api_url(), context.app_username, context.app_password)
     user_id = page.get_user_id_by_username_contains(context.scenario.name)
     context.logger.info("*** Found User Id {} ***".format(user_id))
@@ -150,10 +155,17 @@ def delete_user(context):
     context.logger.info("*** User Id {} has been deleted! ***".format(user_id))
 
 
-def delete_folder(context):
+def delete_folder_api(context):
     page = FilerPage(ReadEnvConfig.get_app_api_url(), context.app_username, context.app_password)
     folder_id = page.get_folder_id_by_foldername_contains(context.scenario.name)
     context.logger.info("*** Found Folder Id {} ***".format(folder_id))
     context.logger.info("*** Deleting Folder Id {}... ***".format(folder_id))
     page.delete_folder(folder_id)
     context.logger.info("*** Folder Id {} has been deleted! ***".format(folder_id))
+
+
+def create_folder_api(context):
+    context.logger.info("{}".format(os.listdir()))
+    page = FilerPage(ReadEnvConfig.get_app_api_url(), context.app_username, context.app_password)
+    response_code = page.create_folder()
+    context.logger.info("*** Folder creation returned response code: {} ***".format(response_code))

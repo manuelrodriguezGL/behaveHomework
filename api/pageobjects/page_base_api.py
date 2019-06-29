@@ -1,3 +1,5 @@
+import json
+
 import urllib3
 from requests.auth import HTTPBasicAuth
 
@@ -13,3 +15,9 @@ class ApiBase:
     @property
     def url(self):
         return self.base_url
+
+    def json_loader(self, filename):
+        with open(filename, 'r') as f:
+            print(filename)
+            data = json.load(f)
+        return data

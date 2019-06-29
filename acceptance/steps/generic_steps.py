@@ -19,12 +19,13 @@ def step_impl(context, text):
     assert visibility_of(page.element_and_text(page.page_header(), text))
 
 
-@step('I click button with value "(.*)"')
-def step_impl(context, value):
-    page = GenericPage(context)
-    page.button_vale(value).click()
-
-
-@step("I wait for 2 seconds")
+@step('I wait for 2 seconds')
 def step_impl(context):
     explicit_wait(2)
+
+
+@step('I click into the site name')
+def step_impl(context):
+    page = GenericPage(context)
+    if page.page_site_name():
+        page.page_site_name().click()

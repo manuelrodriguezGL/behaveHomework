@@ -1,12 +1,25 @@
-2019-06-28 21:54:47 INFO     ************************************************************************************************
-2019-06-28 21:54:47 INFO     * STARTING EXECUTION OF AUTOMATION..
-2019-06-28 21:54:47 INFO     ************************************************************************************************
-2019-06-28 21:54:47 INFO     Before all execution configurations -- setting environment..
-2019-06-28 21:54:49 INFO     We are using 'Chrome' as a browser with driver version: 75.0.3770.100
-2019-06-28 21:54:53 INFO     ********************************************************************
-2019-06-28 21:54:53 INFO     * Finished test case 002
-2019-06-28 21:54:53 INFO     ********************************************************************
-2019-06-28 21:54:53 INFO     *** Found Folder Id 7 ***
-2019-06-28 21:54:53 INFO     *** Deleting Folder Id 7... ***
-2019-06-28 21:54:53 INFO     *** Folder Id 7 has been deleted! ***
-2019-06-28 21:54:53 INFO     Closing the browser
+2019-06-29 11:24:51 INFO     ************************************************************************************************
+2019-06-29 11:24:51 INFO     * STARTING EXECUTION OF AUTOMATION..
+2019-06-29 11:24:51 INFO     ************************************************************************************************
+2019-06-29 11:24:51 INFO     Before all execution configurations -- setting environment..
+2019-06-29 11:24:53 INFO     We are using 'Chrome' as a browser with driver version: 75.0.3770.100
+2019-06-29 11:24:59 INFO     ********************************************************************
+2019-06-29 11:24:59 INFO     * Finished test case 
+2019-06-29 11:24:59 INFO     ********************************************************************
+2019-06-29 11:24:59 INFO     *** Found Folder Id 48 ***
+2019-06-29 11:24:59 INFO     *** Deleting Folder Id 48... ***
+2019-06-29 11:24:59 INFO     *** Folder Id 48 has been deleted! ***
+2019-06-29 11:24:59 INFO     ['allure-results', 'allure-report', '.DS_Store', 'requirements.txt', 'Dockerfile', 'web', 'README.md', 'log.txt', 'acceptance', '.gitignore', 'behave.ini', 'api', 'docker-compose.yml', '.git', '.idea']
+2019-06-29 11:25:00 INFO     *** Folder creation returned response code: 201 ***
+2019-06-29 11:25:06 INFO     ********************************************************************
+2019-06-29 11:25:06 INFO     * Finished test case 003
+2019-06-29 11:25:06 INFO     ********************************************************************
+2019-06-29 11:25:06 INFO     Closing the browser
+2019-06-29 11:25:09 INFO     We are using 'Chrome' as a browser with driver version: 75.0.3770.100
+2019-06-29 11:25:17 INFO     ********************************************************************
+2019-06-29 11:25:17 INFO     * Finished test case 001
+2019-06-29 11:25:17 INFO     ********************************************************************
+2019-06-29 11:25:17 INFO     *** Found User Id 29 ***
+2019-06-29 11:25:17 INFO     *** Deleting User Id 29... ***
+2019-06-29 11:25:17 INFO     *** User Id 29 has been deleted! ***
+2019-06-29 11:25:17 INFO     Closing the browser

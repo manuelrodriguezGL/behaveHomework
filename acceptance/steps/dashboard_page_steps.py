@@ -41,3 +41,18 @@ def step_impl(context):
         page.folders_option.click()
     except Exception as e:
         print(e.__cause__)
+
+
+@step('I logout the application')
+def step_impl(context):
+    context.execute_steps(f"""
+                When I click logout option
+                And I click into the site name
+                And I wait for 2 seconds
+            """)
+
+
+@step('I click logout option')
+def step_impl(context):
+    page = DashboardPage(context)
+    page.logout_option.click()

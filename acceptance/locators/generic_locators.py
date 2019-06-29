@@ -8,3 +8,5 @@ class GenericLocators:
     PAGE_NAME = (By.XPATH, "//h1[@id='site-name']/a")
     PAGE_HEADER = (By.XPATH, "//div[@id='content']/h1")
     BUTTON_VALUE = "//*[value='{}']"
+
+    PAGE_SITE_NAME = By.XPATH, "//h1[@id='site-name']/a"

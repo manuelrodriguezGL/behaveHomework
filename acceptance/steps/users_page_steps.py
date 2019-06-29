@@ -17,4 +17,4 @@ def step_impl(context, text):
 @step('I see "(.*)" displayed on results grid')
 def step_impl(context, text):
     page = UsersPage(context)
-    assert find_text_on_collection(page.users_name_table, text)
+    assert find_text_on_collection(page.users_name_table, text), "User not found: {}!".format(text)
