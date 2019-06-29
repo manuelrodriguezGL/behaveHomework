@@ -32,9 +32,11 @@ def step_impl(context):
 
 @step('Add new folder window is opened')
 def step_impl(context):
-    driver = context.driver
-    window_new = driver.window_handles[1]
-    driver.switch_to.window(window_new)
+    try:
+        window_new = get_window_handle(context, 1)
+        context.driver.switch_to.window(window_new)
+    except Exception as e:
+        context.logger.info(e.__cause__)
 
 
 @step('I fill folder name with value "(.*)"')
@@ -58,11 +60,11 @@ def step_impl(context):
 @step('I return to main window')
 def step_impl(context):
     try:
-        main_window = get_main_window_handle(context)
+        main_window = get_window_handle(context)
         context.driver.switch_to.window(main_window)
     except Exception as e:
         context.logger.info(e.__cause__)
 
 
-def get_main_window_handle(context):
-    return context.driver.window_handles[0]  # Gets the main window
+def get_window_handle(context, index=0):
+    return context.driver.window_handles[index]

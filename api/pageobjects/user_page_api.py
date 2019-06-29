@@ -23,10 +23,6 @@ class UsersPage(ApiBase):
         finally:
             return user_id
 
-    def delete_user(self, user_id):
-        response = requests.delete("{}{}{}".format(self.url, self.USERS_BASE_URL, "{}/".format(user_id)), auth=self.auth)
-        return response.status_code
-
     def get_user_id_by_username_contains(self, username):
         user_id = None
         try:
@@ -39,3 +35,7 @@ class UsersPage(ApiBase):
             print(e.__cause__)
         finally:
             return user_id
+
+    def delete_user(self, user_id):
+        response = requests.delete("{}{}{}".format(self.url, self.USERS_BASE_URL, "{}/".format(user_id)), auth=self.auth)
+        return response.status_code

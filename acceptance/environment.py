@@ -3,6 +3,7 @@ from selenium import webdriver
 
 from acceptance.utils.logger import setup_custom_logger
 from acceptance.utils.read_env_config import ReadEnvConfig
+from api.pageobjects.filer_page_api import FilerPage
 from api.pageobjects.user_page_api import UsersPage
 from api.testcases.test_user_suite import TestUserSuite
 
@@ -120,6 +121,9 @@ def after_tag(context, tag):
     if tag == "users.remove_successful":
         delete_user(context)
 
+    if tag == "folders.remove_successful":
+        delete_folder(context)
+
 # context.execute_steps(f"""
         #     Given I login with username "valid_user" and password "valid_password"
         #     When I wait 2 seconds
@@ -144,3 +148,12 @@ def delete_user(context):
     context.logger.info("*** Deleting User Id {}... ***".format(user_id))
     page.delete_user(user_id)
     context.logger.info("*** User Id {} has been deleted! ***".format(user_id))
+
+
+def delete_folder(context):
+    page = FilerPage(ReadEnvConfig.get_app_api_url(), context.app_username, context.app_password)
+    folder_id = page.get_folder_id_by_foldername_contains(context.scenario.name)
+    context.logger.info("*** Found Folder Id {} ***".format(folder_id))
+    context.logger.info("*** Deleting Folder Id {}... ***".format(folder_id))
+    page.delete_folder(folder_id)
+    context.logger.info("*** Folder Id {} has been deleted! ***".format(folder_id))
