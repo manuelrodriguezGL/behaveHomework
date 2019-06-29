@@ -1,8 +1,13 @@
+import os
+
 import allure
 from selenium import webdriver
 
 from acceptance.utils.logger import setup_custom_logger
 from acceptance.utils.read_env_config import ReadEnvConfig
+from api.pageobjects.filer_page_api import FilerPage
+from api.pageobjects.user_page_api import UsersPage
+from api.testcases.test_user_suite import TestUserSuite
 
 
 def before_all(context):
@@ -47,12 +52,12 @@ def after_scenario(context, scenario):
     print('\n')
 
     # logout of the application if logout tag present
-    if "logout" in [tag for tag in scenario.tags]:
-        context.execute_steps(f"""
-            When I logout the application
-            And I click into the site name 
-            And I wait 2 seconds 
-        """)
+    # if "logout" in [tag for tag in scenario.tags]:
+    #     context.execute_steps(f"""
+    #         When I logout the application
+    #         And I click into the site name
+    #         And I wait 2 seconds
+    #     """)
     context.logger.info("********************************************************************")
     context.logger.info(f"* Finished test case {scenario.name}")
     context.logger.info("********************************************************************")
@@ -75,10 +80,14 @@ def before_feature(context, feature):
         context.logger.info(
             "We are using 'Firefox' as a browser with driver version: {}".format(context.driver.desired_capabilities['moz:geckodriverVersion']))
     elif context.config.userdata.get('browser') == 'chrome':
+        context.logger.info("User Browser: {}".format(context.config.userdata.get('browser')))
         chrome_options = webdriver.ChromeOptions()
-        chrome_options.add_argument('--headless')
+        if context.config.userdata.get('se_headless') == "True":
+            chrome_options.add_argument('--headless')
 
+        chrome_options.add_argument('--disable-dev-shm-usage')
         path = context.config.userdata.get('chromedriver_path')
+        context.logger.info("Chromedriver path: {}".format(path))
         if path == "":
             context.driver = webdriver.Chrome(chrome_options=chrome_options)
         else:
@@ -91,8 +100,8 @@ def before_feature(context, feature):
         context.logger.error(e.__class__)
         context.logger.warning("Unable to maximize the browser. ")
 
-    context.driver.set_page_load_timeout(context.config.userdata.get('se_default_page_load_time'))
-    context.driver.implicitly_wait(context.config.userdata.get('se_default_implicit_time'))
+    context.driver.set_page_load_timeout(context.config.userdata.get('se_default_page_load_wait'))
+    context.driver.implicitly_wait(context.config.userdata.get('se_default_implicit_wait'))
     context.driver.delete_all_cookies()
     context.driver.get(context.app_url)
 
@@ -108,25 +117,58 @@ def before_tag(context, tag):
     if tag == "smoke":
         print_custom("This is part of a smoke testing")
 
+    if tag == "folders.remove_successful_ui":
+        create_folder_api(context)
+
 
 def before_rule(context, rule):
     print_custom(rule)
 
 
 def after_tag(context, tag):
-    if tag == "remove_user":
-        context.execute_steps(f"""
-            Given I login with username "valid_user" and password "valid_password"
-            When I wait 2 seconds
-            And I select Users link in dashboard
-            And I remove user with name "{context.scenario.name}" if exists
-            And I logout the application
-            And I click into the site name 
-            And I wait 2 seconds
-        """)
+    if tag == "users.add_successful":
+        delete_user_api(context)
+
+    if tag == "folders.create_successful":
+        delete_folder_api(context)
+
+# context.execute_steps(f"""
+        #     Given I login with username "valid_user" and password "valid_password"
+        #     When I wait 2 seconds
+        #     And I select Users link in dashboard
+        #     And I remove user with name "{context.scenario.name}" if exists
+        #     And I logout the application
+        #     And I click into the site name
+        #     And I wait 2 seconds
+        # """)
 
 
 def print_custom(text):
     print("\n\n******************************************************************************")
     print(text)
     print("******************************************************************************\n\n")
+
+
+def delete_user_api(context):
+    page = UsersPage(ReadEnvConfig.get_app_api_url(), context.app_username, context.app_password)
+    user_id = page.get_user_id_by_username_contains(context.scenario.name)
+    context.logger.info("*** Found User Id {} ***".format(user_id))
+    context.logger.info("*** Deleting User Id {}... ***".format(user_id))
+    page.delete_user(user_id)
+    context.logger.info("*** User Id {} has been deleted! ***".format(user_id))
+
+
+def delete_folder_api(context):
+    page = FilerPage(ReadEnvConfig.get_app_api_url(), context.app_username, context.app_password)
+    folder_id = page.get_folder_id_by_foldername_contains(context.scenario.name)
+    context.logger.info("*** Found Folder Id {} ***".format(folder_id))
+    context.logger.info("*** Deleting Folder Id {}... ***".format(folder_id))
+    page.delete_folder(folder_id)
+    context.logger.info("*** Folder Id {} has been deleted! ***".format(folder_id))
+
+
+def create_folder_api(context):
+    context.logger.info("{}".format(os.listdir()))
+    page = FilerPage(ReadEnvConfig.get_app_api_url(), context.app_username, context.app_password)
+    response_code = page.create_folder()
+    context.logger.info("*** Folder creation returned response code: {} ***".format(response_code))

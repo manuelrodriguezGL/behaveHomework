@@ -1,16 +1,16 @@
-from acceptance.locators.login_locators import LoginLocators
+from acceptance.locators.login_page_locators import LoginPageLocators
 from acceptance.page_model.base_page import BasePage
 
 
 class LoginPage(BasePage):
     @property
-    def username(self):
-        return self.driver.find_element(*LoginLocators.USERNAME)
+    def username_text(self):
+        return self.driver.find_element(*LoginPageLocators.USERNAME_TEXT)
 
     @property
-    def password(self):
-        return self.driver.find_element(*LoginLocators.PASSWORD)
+    def password_text(self):
+        return self.driver.find_element(*LoginPageLocators.PASSWORD_TEXT)
 
     @property
-    def submit_btn(self):
-        return self.driver.find_element(*LoginLocators.SUBMIT)
+    def login_button(self):
+        return self.driver.find_element(*LoginPageLocators.LOGIN_BUTTON)

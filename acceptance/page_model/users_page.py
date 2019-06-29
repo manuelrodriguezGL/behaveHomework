@@ -1,33 +1,24 @@
-from acceptance.locators.login_locators import LoginLocators
-from acceptance.locators.users_locators import UsersLocators
+from acceptance.locators.users_page_locators import UsersPageLocators
 from acceptance.page_model.base_page import BasePage
 
 
 class UsersPage(BasePage):
     @property
-    def add_user(self):
-        return self.driver.find_element(*UsersLocators.ADD_USER)
+    def get_header(self):
+        return self.driver.find_element(*UsersPageLocators.HEADER_H1)
 
     @property
     def search_bar(self):
-        return self.driver.find_element(*UsersLocators.SEARCH_BAR)
+        return self.driver.find_element(*UsersPageLocators.SEARCHBAR_TEXT)
 
     @property
-    def search_btn(self):
-        return self.driver.find_element(*UsersLocators.SEARCH_BTN)
+    def search_button(self):
+        return self.driver.find_element(*UsersPageLocators.SEARCH_BUTTON)
 
     @property
-    def users_table(self):
-        return self.driver.find_element(*UsersLocators.USERS_TABLE)
+    def users_result_table(self):
+        return self.driver.find_element(*UsersPageLocators.USERS_RESULT_TABLE)
 
     @property
-    def select_all_check(self):
-        return self.driver.find_element(*UsersLocators.SELECT_ALL_CHECK)
-
-    @property
-    def action_select(self):
-        return self.driver.find_element(*UsersLocators.ACTION_SELECT)
-
-    @property
-    def go_button(self):
-        return self.driver.find_element(*UsersLocators.GO_BUTTON)
+    def users_name_table(self):
+        return self.driver.find_elements(*UsersPageLocators.USERS_TABLE_NAMES)
